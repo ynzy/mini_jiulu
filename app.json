@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/classic/classic"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffff00",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "张雨凡",
+    "navigationStyle": "default",
+    "backgroundColor": "#fff",
+    "enablePullDownRefresh": false
+  }
+}
