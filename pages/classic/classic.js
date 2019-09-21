@@ -1,29 +1,28 @@
 // pages/classic/classic.js
-import { HTTP } from "../../utils/http";
-let http = new HTTP()
+import {
+  ClassicModel,
+} from "../../models/classic";
+let classicModel = new ClassicModel()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    classic: null //期刊数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    http.request({
-      url: '/classic/latest'
-    }).then(res => {
-      console.log(res);
-    }).catch(err=> {
-      console.log(err);
-    }).finally(()=> {
-      console.log('1');
-    })
-
+    classicModel.getLatest()
+      .then(classic => {
+        // console.log(res);
+        this.setData({
+          classic
+        })
+      })
 
     /* wx.request({
       url: 'http://bl.7yue.pro/v1/classic/latest',
