@@ -1,0 +1,17 @@
+@hostname = http://bl.7yue.pro/v1
+@port = 8080
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@appkey = RdshydjBvcYZhMZC
+@createdAt = {{$datetime iso8601}}
+@modifiedBy = {{$processEnv USERNAME}}
+
+### 获取最新一期
+GET {{hostname}}/classic/latest
+content-type: {{contentType}}
+appkey: {{appkey}}
+
+
+
+
+

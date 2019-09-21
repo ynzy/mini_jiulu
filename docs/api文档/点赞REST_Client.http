@@ -1,0 +1,27 @@
+@hostname = http://bl.7yue.pro/v1
+@port = 8080
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@appkey = RdshydjBvcYZhMZC
+@createdAt = {{$datetime iso8601}}
+@modifiedBy = {{$processEnv USERNAME}}
+
+### 点赞
+POST {{hostname}}/like
+content-type: {{contentType}}
+appkey: {{appkey}}
+
+{
+  "art_id": 1,
+  "type": 100
+}
+
+### 取消点赞
+POST {{hostname}}/like/cancel
+content-type: {{contentType}}
+appkey: {{appkey}}
+
+{
+  "art_id": 1,
+  "type": 100
+}

@@ -39,7 +39,7 @@ Component({
       })
       //! 自定义事件
       // 如果like为真,点赞操作,否则取消点赞
-      let behavior = like ? 'like' : 'cancel'
+      let behavior = like ? 'cancel' : 'like'
       /**
        * ! 激活事件并附带behavior状态
        * 参数1: 自定义事件

@@ -1,4 +1,4 @@
-<!-- components/like/index.wxml -->
+<!-- components/like/index.wxml 点赞组件 -->
 <view bind:tap="onLike" class="container">
   <image src="{{like ? yesSrc : noSrc }}" />
   <text>{{count}}</text>
