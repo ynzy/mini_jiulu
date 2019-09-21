@@ -1,0 +1,20 @@
+.classic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.classic-container .classic-img {
+  width: 750rpx;
+  height: 500rpx;
+}
+.classic-container .tag {
+  position: relative;
+  right: 312rpx;
+  bottom: 58rpx;
+  width: 46rpx;
+  height: 142rpx;
+}
+.classic-container .content {
+  max-width: 550rpx;
+  font-size: 36rpx;
+}
