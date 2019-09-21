@@ -12,29 +12,21 @@ Page({
     classic: null //期刊数据
   },
 
+  onLike(event) {
+    console.log(event);
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     classicModel.getLatest()
       .then(classic => {
-        // console.log(res);
+        // console.log(classic);
         this.setData({
           classic
         })
       })
-
-    /* wx.request({
-      url: 'http://bl.7yue.pro/v1/classic/latest',
-      header: {
-        appkey: 'RdshydjBvcYZhMZC'
-      },
-      success: (res) => {
-        console.log(this.data.test);
-        console.log(res);
-      }
-    }) */
-
   },
 
   /**
@@ -48,20 +40,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    /* let promise = new Promise((resolve,reject) => {
-      wx.request({
-        url: 'http://bl.7yue.pro/v1/classic/latest',
-        header: {
-          appkey: 'RdshydjBvcYZhMZC'
-        },
-        success: (res) => {
-          resolve(res)
-        }
-      })
-    })
-    promise.then(res=> {
-      console.log(res);
-    }) */
 
   },
 

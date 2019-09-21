@@ -25,15 +25,31 @@ Component({
    */
   methods: {
     onLike(event) {
+
       /* let like = this.properties.like
       let count = this.properties.count */
-      let { like, count } = this.properties
+      let {
+        like,
+        count
+      } = this.properties
       count = like ? count - 1 : count + 1
       this.setData({
         like: !like,
         count
       })
+      //! 自定义事件
+      // 如果like为真,点赞操作,否则取消点赞
+      let behavior = like ? 'like' : 'cancel'
+      /**
+       * ! 激活事件并附带behavior状态
+       * 参数1: 自定义事件
+       * 参数2: 自己定义的属性,传递出去的参数
+       * 参数3: 触发事件,内置事件,一般不会使用
+       */
 
+      this.triggerEvent('like', {
+        behavior
+      }, {})
     }
   }
 })
