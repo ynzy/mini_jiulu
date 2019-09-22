@@ -1,2 +1,2 @@
-<!--components/classic/essay/index.wxml-->
-<text>components/classic/essay/index.wxml</text>
+<!-- components/classic/essay/index.wxml 期刊句子组件 -->
+<view hidden="{{hidden}}">期刊句子组件</view>

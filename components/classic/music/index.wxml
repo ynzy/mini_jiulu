@@ -1,5 +1,5 @@
 <!-- components/classic/music/index.wxml 期刊音乐组件 -->
-<view>
+<view hidden="{{hidden}}">
   <image src="{{img}}"></image>
   <image src="{{playSrc}}"></image>
   <image src="./images/music@tag.png"></image>

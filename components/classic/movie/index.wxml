@@ -1,5 +1,5 @@
 <!-- components/classic/movie/index.wxml 期刊电影组件 -->
-<view class="classic-container">
+<view hidden="{{hidden}}" class="classic-container">
   <image class="classic-img" src="{{img}}" />
   <image class="tag" src="images/movie@tag.png" />
   <text class="content">{{content}}</text>
