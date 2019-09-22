@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 660rpx;
+  height: 80rpx;
+  border-radius: 2px;
+  background: #f7f7f7;
+}
+.container .icon {
+  height: 80rpx;
+  width: 80rpx;
+}
+.container .title {
+  font-size: 28rpx;
+}

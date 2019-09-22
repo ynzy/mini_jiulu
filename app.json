@@ -3,7 +3,7 @@
     "pages/classic/classic"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffff00",
+    "navigationBarBackgroundColor": "#d3d3d3",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "张雨凡",
     "navigationStyle": "default",

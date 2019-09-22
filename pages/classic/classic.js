@@ -11,7 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classic: null //期刊数据
+    classic: null, //期刊数据
+    latest: true,
+    first: false
   },
 
   onLike(event) {
@@ -21,6 +23,12 @@ Page({
     likeModel.like(behavior, id, type).then(res => {
       console.log(res);
     })
+  },
+  onNext() {
+
+  },
+  onPrevious() {
+
   },
   /**
    * 生命周期函数--监听页面加载
