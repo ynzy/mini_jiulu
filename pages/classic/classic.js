@@ -54,7 +54,7 @@ Page({
   async _updateClassic(nextOrPrevious) {
     const { index } = this.data.classic
     let classic = await classicModel.getClassic(index, nextOrPrevious)
-    // console.log(classic);
+    console.log(classic);
     this.setData({
       classic,
       latest: classicModel.isLatest(classic.index),
@@ -66,7 +66,7 @@ Page({
   // 获取最新期刊数据,保存到storage中
   async getLatest() {
     let classic = await classicModel.getLatest()
-    console.log(classic);
+    // console.log(classic);
     classicModel._setLastestIndex(classic.index)
     this.setData({ classic })
 
