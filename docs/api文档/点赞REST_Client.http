@@ -25,3 +25,8 @@ appkey: {{appkey}}
   "art_id": 1,
   "type": 100
 }
+
+### 获取点赞信息
+GET {{hostname}}classic/100/1/favor
+content-type: {{contentType}}
+appkey: {{appkey}}

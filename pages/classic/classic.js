@@ -12,17 +12,20 @@ Page({
    */
   data: {
     classic: null, //期刊数据
-    latest: true,
-    first: false
+    latest: true,  // 最新期刊
+    first: false,  // 第一期期刊
+    likeCount: 0,  //喜欢的数量
+    likeStatus: false //喜欢的状态
   },
 
   onLike(event) {
     let { behavior } = event.detail
     let { id, type } = this.data.classic
-    console.log(behavior);
-    likeModel.like(behavior, id, type).then(res => {
-      console.log(res);
-    })
+    // console.log(behavior);
+    likeModel.like(behavior, id, type)
+    // .then(res => {
+    //   console.log(res);
+    // })
   },
   /*   async onNext() {
       const { index } = this.data.classic
@@ -54,6 +57,7 @@ Page({
   async _updateClassic(nextOrPrevious) {
     const { index } = this.data.classic
     let classic = await classicModel.getClassic(index, nextOrPrevious)
+    this._getLikeStatus(classic.id, classic.type)
     console.log(classic);
     this.setData({
       classic,
@@ -61,14 +65,26 @@ Page({
       first: classicModel.isFirst(classic.index)
     })
   },
+  async _getLikeStatus(arrt_id, type) {
+    let { fav_nums, like_status } = await likeModel.getClassicLikeStatus(arrt_id, type)
+    console.log(data);
+    this.setData({ likeCount: fav_nums, likeStatus: like_status })
 
+  },
 
   // 获取最新期刊数据,保存到storage中
   async getLatest() {
     let classic = await classicModel.getLatest()
     // console.log(classic);
     classicModel._setLastestIndex(classic.index)
-    this.setData({ classic })
+    //! 这里不要使用请求更新点赞状态,减少请求次数,使用现有的数据进行更新
+    // this._getLikeStatus(classic.fav_nums,classic.like_status)
+    this.setData({
+      // ...classic,
+      classic,
+      likeCount: classic.fav_nums,
+      likeStatus: classic.like_status
+    })
 
   },
   /**
