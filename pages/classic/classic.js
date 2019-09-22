@@ -24,23 +24,41 @@ Page({
       console.log(res);
     })
   },
-  onNext() {
+  async onNext() {
+    const { index } = this.data.classic
+    let classic = await classicModel.getNext(index)
+    // console.log(classic);
+    this.setData({
+      classic,
+      latest: classicModel.isLatest(classic.index),
+      first: classicModel.isFirst(classic.index)
+    })
+  },
+  async onPrevious() {
+    const { index } = this.data.classic
+    let classic = await classicModel.getPrevious(index)
+    // console.log(classic);
+    this.setData({
+      classic,
+      latest: classicModel.isLatest(classic.index),
+      first: classicModel.isFirst(classic.index)
+    })
+    // 
 
   },
-  onPrevious() {
+  // 获取最新期刊数据,保存到storage中
+  async getLatest() {
+    let classic = await classicModel.getLatest()
+    console.log(classic);
+    classicModel._setLastestIndex(classic.index)
+    this.setData({ classic })
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    classicModel.getLatest()
-      .then(classic => {
-        console.log(classic);
-        this.setData({
-          classic
-        })
-      })
+    this.getLatest();
   },
 
   /**

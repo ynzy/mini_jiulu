@@ -11,7 +11,14 @@ GET {{hostname}}/classic/latest
 content-type: {{contentType}}
 appkey: {{appkey}}
 
+### 获取当前一期的上一期
+GET {{hostname}}/classic/2/previous
+content-type: {{contentType}}
+appkey: {{appkey}}
 
 
-
+### 获取当前一期的下一期
+GET {{hostname}}/classic/2/next
+content-type: {{contentType}}
+appkey: {{appkey}}
 

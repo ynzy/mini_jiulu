@@ -5,7 +5,7 @@ Component({
   /**
    * 组件的属性列表
    */
-  // 继承behavios
+  // 继承behavios  多继承
   behaviors: [classicBeh],
   properties: {
 
