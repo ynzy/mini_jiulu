@@ -46,3 +46,23 @@
 }
 ```
 
+## 背景音乐播放API
+`wx.getBackgroundAudioManager`
+
+返回值
+
+BackgroundAudioManager
+
+属性: 
+
+* string src 音频的数据源,当设置了新的 src 时，会自动开始播放
+* boolean paused 当前是否暂停或停止。（只读）
+
+方法: 
+
+* play()  播放
+* pause() 暂停
+* stop()  停止
+* onPlay() 播放事件
+* onPause() 暂停事件
+* onStop() 停止事件

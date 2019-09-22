@@ -12,7 +12,7 @@ class LikeModel extends HTTP {
     })
   }
   getClassicLikeStatus(art_id, type) {
-    return this.request({ url: `classic/${type}/${art_id}` })
+    return this.request({ url: `/classic/${type}/${art_id}` })
   }
 }
 

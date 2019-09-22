@@ -67,7 +67,7 @@ Page({
   },
   async _getLikeStatus(arrt_id, type) {
     let { fav_nums, like_status } = await likeModel.getClassicLikeStatus(arrt_id, type)
-    console.log(data);
+
     this.setData({ likeCount: fav_nums, likeStatus: like_status })
 
   },
