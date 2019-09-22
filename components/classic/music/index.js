@@ -22,7 +22,9 @@ Component({
     pauseSrc: 'images/player@pause.png',
     playSrc: 'images/player@play.png'
   },
-
+  detached() {
+    mMgr.stop()
+  },
   /**
    * 组件的方法列表
    */
