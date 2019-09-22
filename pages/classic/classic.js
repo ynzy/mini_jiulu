@@ -24,9 +24,36 @@ Page({
       console.log(res);
     })
   },
-  async onNext() {
+  /*   async onNext() {
+      const { index } = this.data.classic
+      let classic = await classicModel.getNext(index)
+      // console.log(classic);
+      this.setData({
+        classic,
+        latest: classicModel.isLatest(classic.index),
+        first: classicModel.isFirst(classic.index)
+      })
+    }, 
+      async onPrevious() {
+      const { index } = this.data.classic
+      let classic = await classicModel.getPrevious(index)
+      // console.log(classic);
+      this.setData({
+        classic,
+        latest: classicModel.isLatest(classic.index),
+        first: classicModel.isFirst(classic.index)
+      })
+    },
+    */
+  onNext() {
+    this._updateClassic(`next`)
+  },
+  onPrevious() {
+    this._updateClassic(`previous`)
+  },
+  async _updateClassic(nextOrPrevious) {
     const { index } = this.data.classic
-    let classic = await classicModel.getNext(index)
+    let classic = await classicModel.getClassic(index, nextOrPrevious)
     // console.log(classic);
     this.setData({
       classic,
@@ -34,18 +61,8 @@ Page({
       first: classicModel.isFirst(classic.index)
     })
   },
-  async onPrevious() {
-    const { index } = this.data.classic
-    let classic = await classicModel.getPrevious(index)
-    // console.log(classic);
-    this.setData({
-      classic,
-      latest: classicModel.isLatest(classic.index),
-      first: classicModel.isFirst(classic.index)
-    })
-    // 
 
-  },
+
   // 获取最新期刊数据,保存到storage中
   async getLatest() {
     let classic = await classicModel.getLatest()

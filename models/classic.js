@@ -8,7 +8,12 @@ class ClassicModel extends HTTP {
       url: '/classic/latest'
     })
   }
-  getPrevious(index) {
+  getClassic(index, nextOrPrevious) {
+    return this.request({
+      url: `/classic/${index}/${nextOrPrevious}`
+    })
+  }
+  /* getPrevious(index) {
     return this.request({
       url: `/classic/${index}/previous`
     })
@@ -17,7 +22,7 @@ class ClassicModel extends HTTP {
     return this.request({
       url: `/classic/${index}/next`
     })
-  }
+  } */
   // 判断当前期刊是不是第一个
   isFirst(index) {
     return index == 1 ? true : false;
