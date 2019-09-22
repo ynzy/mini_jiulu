@@ -1,2 +1,6 @@
 <!-- components/classic/essay/index.wxml 期刊句子组件 -->
-<view hidden="{{hidden}}">期刊句子组件</view>
+<view hidden="{{hidden}}" class="classic-container">
+  <image class="classic-img" src="{{img}}" />
+  <image class="tag" src="images/essay@tag.png" />
+  <text class="content">{{content}}</text>
+</view>
