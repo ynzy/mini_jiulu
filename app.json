@@ -5,7 +5,7 @@
     "pages/book/book"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#d3d3d3",
+    "navigationBarBackgroundColor": "#fac001",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "张雨凡",
     "navigationStyle": "default",
