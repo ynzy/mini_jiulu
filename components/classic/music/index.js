@@ -23,7 +23,8 @@ Component({
     playSrc: 'images/player@play.png'
   },
   attached() {
-    this._recoverStatus()
+    this._recoverStatus();
+    this._monitorSwitch();
   },
   detached() {
     // mMgr.stop()
@@ -47,18 +48,38 @@ Component({
         mMgr.pause()
       }
     },
-    // 查看音乐的状态
+    // 恢复音乐状态
     _recoverStatus() {
-      const {src} = this.properties
+      const { src } = this.properties
       // 如果音乐是暂停状态
-      if(mMgr.paused) {
-        this.setData({playing: false})
-        return 
+      if (mMgr.paused) {
+        this.setData({ playing: false })
+        return
       }
       // 如果当前音乐路径和传入的音乐路径相等
-      if(mMgr.src == src) {
-        this.setData({playing: true})
+      if (mMgr.src == src) {
+        this.setData({ playing: true })
       }
+    },
+    // 监听音乐总控开开关
+    _monitorSwitch() {
+      // 播放
+      mMgr.onPlay(() => {
+        this._recoverStatus()
+      })
+      // 暂停
+      mMgr.onPause(() => {
+        this._recoverStatus()
+      })
+      // 停止
+      mMgr.onStop(() => {
+        this._recoverStatus()
+      })
+      // 自然播放结束
+      mMgr.onEnded(() => {
+        this._recoverStatus()
+      })
+
     }
   }
 })
