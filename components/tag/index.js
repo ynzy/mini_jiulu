@@ -7,6 +7,8 @@ Component({
     //! 启用插槽
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
   },
+  //! 外部样式类
+  externalClasses: ['tag-class'],
   properties: {
     text: String
   },

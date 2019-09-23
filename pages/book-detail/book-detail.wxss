@@ -51,3 +51,9 @@
   font-size: 22rpx;
   color: #aaa;
 }
+.container .sub-container .comment-container .ex-tag1 {
+  background: #f7f273;
+}
+.container .sub-container .comment-container .ex-tag2 {
+  background: #68cbfc;
+}
