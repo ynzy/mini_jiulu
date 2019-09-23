@@ -18,20 +18,13 @@ Page({
   },
   async getHotList() {
     let books = await bookModel.getHotList()
-    console.log(books);
-    this.setData({books})
-    let favor = await bookModel.getMyBookCount()
-    console.log(favor);
+    // console.log(books);
+    this.setData({ books })
   },
   openDetail(e) {
-    const {bid} = e.target.dataset
+    const { bid } = e.target.dataset
     wx.navigateTo({
-      url: `/pages/book-detail/book-detail?bid=${bid}`,
-      success: (result) => {
-        console.log(result);
-      },
-      fail: () => {},
-      complete: () => {}
+      url: `/pages/book-detail/book-detail?bid=${bid}`
     });
   },
   /**
