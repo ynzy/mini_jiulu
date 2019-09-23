@@ -13,7 +13,7 @@
   border-top: 1px solid #f5f5f5;
   border-bottom: 1px solid #f5f5f5;
 }
-.container .header .epsoide {
+.container .header .episode {
   margin-left: 20rpx;
   margin-top: 4rpx;
 }
