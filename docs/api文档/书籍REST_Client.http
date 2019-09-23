@@ -5,8 +5,8 @@
 @appkey = RdshydjBvcYZhMZC
 
 
-### 获取最新一期
-GET {{hostname}}/classic/latest
+### 获取热门书籍(概要)
+GET {{hostname}}/book/hot_list
 content-type: {{contentType}}
 appkey: {{appkey}}
 

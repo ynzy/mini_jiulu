@@ -1,3 +1,5 @@
+// 优化http,promise封装
+
 import { config } from "../config";
 
 const tips = {
@@ -14,59 +16,50 @@ const tips = {
   2001: '你还没点过赞',
   3000: '该期内容不存在'
 }
-//添加事件结束
-/* Promise.prototype.finally = function (callback) {
-  return this.then(val=> {
-        return  Promise.resolve(callback()).then(value=>val);
-      },err => {
-        return  Promise.resolve(callback()).then(()=>{throw err})
-      }
-  );
-} */
 
-class HTTP {
+class Http {
   constructor() {
     this.baseRestUrl = config.api_blink_url
   }
-  request(params) {
-    let url = this.baseRestUrl + params.url
+  request({ url, data = {}, method = 'GET' }) {
     return new Promise((resolve, reject) => {
       wx.request({
-        url,
-        method: params.method || 'GET',
-        data: params.data,
+        url: this.baseRestUrl + url,
+        data,
+        method,
         header: {
           'content-type': 'application/json',
           'appkey': config.appkey
         },
         success: res => {
-          let code = res.statusCode.toString()
+          // 判断以2（2xx)开头的状态码为正确
+          // 异常不要返回到回调中，就在request中处理，记录日志并showToast一个统一的错误即可
+          const code = res.statusCode.toString()
           if (code.startsWith('2')) {
-            resolve(res.data)
+            resolve(res.data);
           } else {
             reject()
-            let error_code = res.data.error_code
+            const error_code = res.data.error_code
             this._show_error(error_code)
           }
         },
         fail: err => {
-          reject(err)
+          reject()
           this._show_error(1)
-        },
-        complete: () => {
-          //? 此处废弃,使用Promise.finally()处理此处功能
         }
-      })
+      });
     })
   }
-
   _show_error(error_code) {
-    if(!error_code) {
+    // 如果error_code不存在
+    if (!error_code) {
       error_code = 1
     }
+    // 增强健壮性判断,有一些error_code没有定义取不到值,
+    // 取不到值默认为1
     const tip = tips[error_code]
     wx.showToast({
-      title: tip ? tip: tips[1],
+      title: tip ? tip : tips[1],
       icon: 'none',
       duration: 2000
     })
@@ -75,4 +68,4 @@ class HTTP {
 }
 
 
-export { HTTP }
+export { Http }

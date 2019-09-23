@@ -1,4 +1,6 @@
 // pages/book/book.js
+import { BookModel } from "../../models/book";
+const bookModel = new BookModel()
 Page({
 
   /**
@@ -12,27 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initInfo();
+    this.getHotList();
   },
-  async initInfo() {
-    let r = await this.getInfo()
+  async getHotList() {
+    let r = await bookModel.getHotList()
+    let favor = await bookModel.getMyBookCount()
     console.log(r);
-
-  },
-  getInfo() {
-    return new Promise((resolve, reject) => {
-      wx.getSystemInfo({
-        success: (res) => {
-          resolve(res)
-        },
-        fail: (err) => {
-          reject(err)
-        },
-        complete: () => { }
-      });
-    })
-
-
+    console.log(favor);
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
