@@ -19,12 +19,12 @@ Page({
   onLoad: function (options) {
     console.log(options);
     const { bid } = options
-    this.initData(bid)
-   /*  this.getDetail(bid)
+    // this.initData(bid)
+    this.getDetail(bid)
     this.getComments(bid)
-    this.getLikeStatus(bid) */
+    this.getLikeStatus(bid)
   },
-  async initData(bid) {
+/*   async initData(bid) {
     const book = await bookModel.getDetail(bid)
     const {comments} = await bookModel.getComments(bid)
     const {like_status,fav_nums} = await bookModel.getLikeStatus(bid)
@@ -35,8 +35,8 @@ Page({
       likeStatus: like_status,
       likeCount: fav_nums
     })
-  },
-  /* async getDetail(bid) {
+  }, */
+  async getDetail(bid) {
     const book = await bookModel.getDetail(bid)
     console.log(book);
     this.setData({book})
@@ -53,7 +53,7 @@ Page({
       likeStatus: like_status,
       likeCount: fav_nums
     })
-  }, */
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
