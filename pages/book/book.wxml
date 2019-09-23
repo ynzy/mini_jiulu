@@ -1,2 +1,2 @@
-<!--pages/book/book.wxml-->
-<text>pages/book/book.wxml</text>
+<!--pages/book/book.wxml 书单页面-->
+<v-book book="{{books[0]}}" />

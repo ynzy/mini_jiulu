@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    books: []
   },
 
   /**
@@ -17,9 +17,10 @@ Page({
     this.getHotList();
   },
   async getHotList() {
-    let r = await bookModel.getHotList()
+    let books = await bookModel.getHotList()
+    console.log(books);
+    this.setData({books})
     let favor = await bookModel.getMyBookCount()
-    console.log(r);
     console.log(favor);
     
   },
