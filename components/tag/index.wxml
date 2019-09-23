@@ -1,0 +1,6 @@
+<!-- components/tag/index.wxml 标签组件 -->
+<view class="container">
+  <text>{{text}}</text>
+  <!-- 插槽 name: 插槽名 -->
+  <slot name="after"></slot>
+</view>

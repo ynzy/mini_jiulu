@@ -37,9 +37,17 @@
 }
 .container .sub-container .comment-container {
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
-  width: 100%;
   flex-wrap: wrap;
+  width: 100%;
   padding: 0 30rpx;
+}
+.container .sub-container .comment-container v-tag {
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+.container .sub-container .comment-container v-tag .num {
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color: #aaa;
 }

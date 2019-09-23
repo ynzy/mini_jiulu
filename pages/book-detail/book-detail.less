@@ -41,11 +41,22 @@
 
     .comment-container {
       display: flex;
-      flex-direction: row;
       justify-content: flex-start;
-      width: 100%;
       flex-wrap: wrap;
+      width: 100%;
       padding: 0 30rpx;
+
+      v-tag {
+        margin-right: 15rpx;
+        //! 加上flex布局才能生效
+        margin-bottom: 10rpx;
+
+        .num {
+          margin-left: 10rpx;
+          font-size: 22rpx;
+          color: #aaa;
+        }
+      }
     }
   }
 
