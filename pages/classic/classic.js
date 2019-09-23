@@ -75,7 +75,7 @@ Page({
   // 获取最新期刊数据,保存到storage中
   async getLatest() {
     let classic = await classicModel.getLatest()
-    // console.log(classic);
+    console.log(classic);
     classicModel._setLastestIndex(classic.index)
     //! 这里不要使用请求更新点赞状态,减少请求次数,使用现有的数据进行更新
     // this._getLikeStatus(classic.fav_nums,classic.like_status)

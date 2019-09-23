@@ -22,8 +22,11 @@ Component({
     pauseSrc: 'images/player@pause.png',
     playSrc: 'images/player@play.png'
   },
+  attached() {
+    this._recoverStatus()
+  },
   detached() {
-    mMgr.stop()
+    // mMgr.stop()
   },
   /**
    * 组件的方法列表
@@ -43,7 +46,19 @@ Component({
       } else {
         mMgr.pause()
       }
-
+    },
+    // 查看音乐的状态
+    _recoverStatus() {
+      const {src} = this.properties
+      // 如果音乐是暂停状态
+      if(mMgr.paused) {
+        this.setData({playing: false})
+        return 
+      }
+      // 如果当前音乐路径和传入的音乐路径相等
+      if(mMgr.src == src) {
+        this.setData({playing: true})
+      }
     }
   }
 })
