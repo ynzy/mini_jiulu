@@ -1,4 +1,4 @@
-<!-- pages/classic/classic.wxml -->
+<!-- pages/classic/classic.wxml 期刊页面-->
 <view class="container">
   <view class="header">
     <v-episode class="episode" index="{{classic.index}}" />

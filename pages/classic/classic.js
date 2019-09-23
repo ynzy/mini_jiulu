@@ -17,7 +17,7 @@ Page({
     likeCount: 0,  //喜欢的数量
     likeStatus: false //喜欢的状态
   },
-
+  // 点赞
   onLike(event) {
     let { behavior } = event.detail
     let { id, type } = this.data.classic
@@ -48,12 +48,15 @@ Page({
       })
     },
     */
+  // 下一期
   onNext() {
     this._updateClassic(`next`)
   },
+  // 上一期
   onPrevious() {
     this._updateClassic(`previous`)
   },
+  // 更新期刊数据
   async _updateClassic(nextOrPrevious) {
     const { index } = this.data.classic
     let classic = await classicModel.getClassic(index, nextOrPrevious)
@@ -65,11 +68,10 @@ Page({
       first: classicModel.isFirst(classic.index)
     })
   },
+  // 更新点赞状态
   async _getLikeStatus(arrt_id, type) {
     let { fav_nums, like_status } = await likeModel.getClassicLikeStatus(arrt_id, type)
-
     this.setData({ likeCount: fav_nums, likeStatus: like_status })
-
   },
 
   // 获取最新期刊数据,保存到storage中

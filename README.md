@@ -66,3 +66,21 @@ BackgroundAudioManager
 * onPlay() 播放事件
 * onPause() 暂停事件
 * onStop() 停止事件
+
+## 代码编写风格
+* https://github.com/airbnb/javascript
+
+主要查看
+1. Types
+2. References
+3. Objects
+4. Arrays
+5. Destructuring
+6. Strings
+7. Functions
+8. Arrow Functions
+9. Classes & Constructors
+10. Modules
+11. Properties
+12. Variables
+13. Blocks

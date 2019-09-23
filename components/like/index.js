@@ -25,7 +25,6 @@ Component({
    */
   methods: {
     onLike(event) {
-
       /* let like = this.properties.like
       let count = this.properties.count */
       let {
