@@ -18,6 +18,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    /* 
+    * 直接写在组件中进行跳转,降低了组件的通用性
+    * 优点: 非常方便
+    * 使用场景: 服务于当前的项目, 项目组件
+    onTap() {
+      const {id} = this.properties.book
+      wx.navigateTo({
+        url: `/pages/book-detail/book-detail?bid=${id}`,
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
+    } */
   }
 })

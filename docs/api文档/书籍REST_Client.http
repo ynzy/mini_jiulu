@@ -10,14 +10,20 @@ GET {{hostname}}/book/hot_list
 content-type: {{contentType}}
 appkey: {{appkey}}
 
-### 获取当前一期的上一期
-GET {{hostname}}/classic/2/previous
+### 获取书籍详细信息
+@bid = 7
+GET {{hostname}}/book/{{bid}}/detail
 content-type: {{contentType}}
 appkey: {{appkey}}
 
-
-### 获取当前一期的下一期
-GET {{hostname}}/classic/2/next
+### 获取书籍点赞状态
+@bid = 7
+GET {{hostname}}/book/{{bid}}/favor
 content-type: {{contentType}}
 appkey: {{appkey}}
 
+### 获取书籍短评信息
+@bid = 7
+GET {{hostname}}/book/{{bid}}/short_comment
+content-type: {{contentType}}
+appkey: {{appkey}}

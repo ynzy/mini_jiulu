@@ -1,39 +1,21 @@
-// pages/book/book.js
-import { BookModel } from "../../models/book";
-const bookModel = new BookModel()
+// pages/book-detail/book-detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    books: []
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getHotList();
+    console.log(options);
+    
   },
-  async getHotList() {
-    let books = await bookModel.getHotList()
-    console.log(books);
-    this.setData({books})
-    let favor = await bookModel.getMyBookCount()
-    console.log(favor);
-  },
-  openDetail(e) {
-    const {bid} = e.target.dataset
-    wx.navigateTo({
-      url: `/pages/book-detail/book-detail?bid=${bid}`,
-      success: (result) => {
-        console.log(result);
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

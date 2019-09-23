@@ -9,8 +9,8 @@
   <view class="sub-container">
     <image class="head-img" src="/images/book/quality.png" />
     <view class="books-container">
-      <block wx:for="{{books}}" wx:for-item="book" wx:key="book.id">
-        <v-book book="{{book}}" />
+      <block wx:for="{{books}}" wx:for-item="book" wx:key="id">
+        <v-book bind:tap="openDetail" data-bid="{{book.id}}" book="{{book}}" />
       </block>
     </view>
   </view>

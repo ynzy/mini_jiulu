@@ -1,5 +1,5 @@
 <!-- components/book/index.wxml 书籍列表 -->
-<view class="container">
+<view  class="container">
   <image src="{{book.image}}" />
   <view class="description">
     <text class="title">{{book.title}}</text>
