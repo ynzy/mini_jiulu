@@ -57,3 +57,7 @@
 .container .sub-container .comment-container .ex-tag2 {
   background: #b8e5fc;
 }
+.container .sub-container .content {
+  text-indent: 58rpx;
+  font-weight: 500;
+}

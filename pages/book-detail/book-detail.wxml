@@ -10,7 +10,7 @@
   <view class="sub-container">
     <text class="headline">短评</text>
     <view class="comment-container">
-      <block wx:for="{{comments}}" wx:key="nums">
+      <block wx:for="{{util.limit(comments,8)}}" wx:key="nums">
         <v-tag tag-class="{{index===0?'ex-tag1': '' || index===1?'ex-tag2': ''}}" text="{{item.content}}">
           <text class="num" slot="after">{{'+' + item.nums}}</text>
         </v-tag>
@@ -19,6 +19,10 @@
   </view>
   <view class="sub-container">
     <text class="headline">内容简介</text>
-    <text class="content">{{util.format(book.summary)}}</text>
+    <!-- decode可以解析的有 &nbsp; &lt; &gt; &amp; &apos; &ensp; &emsp; -->
+    <text class="content" decode="{{true}}">{{util.format(book.summary)}}</text>
   </view>
 </view>
+<!-- <wxs module="util">
+
+</wxs> -->
