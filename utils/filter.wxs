@@ -1,0 +1,11 @@
+// 处理文本内容 \\n -> \n
+//! 这里不能用const , wxs和javascript是两种语言,可以按照ES5语法来写
+// wxs只能使用自己的运行环境
+var format = function (text) {
+  // wxs
+  return '123123'
+}
+
+module.exports = {
+  format: format
+}
