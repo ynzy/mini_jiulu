@@ -27,7 +27,6 @@ Component({
   },
   detached() {
     this.setData({searching:false})
-
   },
   /**
    * 组件的方法列表
@@ -41,7 +40,6 @@ Component({
     // 删除搜索结果
     onDelete() {
       console.log(1);
-      
       this.setData({searching:false,keyword: ''})
     },
     // 取消搜索
@@ -50,12 +48,13 @@ Component({
     },
     // 搜索
     async onConfirm(e) {
-      const { value } = e.detail
-      this.setData({searching:true,keyword: value})
-      const {books: dataArray} = await bookModel.search(0,value)
-      // console.log(dataArray);
+      console.log(e);
+      
+      const q  = e.detail.value || e.detail.text 
+      this.setData({searching:true,keyword: q})
+      const {books: dataArray} = await bookModel.search(0,q)
       if(dataArray) {
-        keywordModel.addToHistory(value)
+        keywordModel.addToHistory(q)
         this.setData({dataArray})
       }
     }

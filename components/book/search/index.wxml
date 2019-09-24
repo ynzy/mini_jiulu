@@ -17,7 +17,7 @@
       </view>
       <view class="tags">
         <block wx:for="{{historyWords}}" wx:key="index">
-          <v-tag text="{{item}}" />
+          <v-tag bind:tapping="onConfirm" text="{{item}}" />
         </block>
       </view>
     </view>
@@ -28,7 +28,7 @@
       </view>
       <view class="tags">
         <block wx:for="{{hotWords}}" wx:key="index">
-          <v-tag text="{{item}}" />
+          <v-tag bind:tapping="onConfirm" text="{{item}}" />
         </block>
       </view>
     </view>
