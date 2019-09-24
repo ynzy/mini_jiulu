@@ -17,4 +17,4 @@
 </view>
 
 
-<v-search bind:cancle="onCanael" wx:if="{{searching}}" />
+<v-search more="{{more}}" bind:cancle="onCanael" wx:if="{{searching}}" />

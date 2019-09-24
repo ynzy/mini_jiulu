@@ -1,6 +1,9 @@
 // components/search/index.js
 import { KeywordModel } from "../../../models/keyword";
 import { BookModel } from "../../../models/book";
+
+
+
 const keywordModel = new KeywordModel()
 const bookModel = new BookModel()
 
@@ -9,7 +12,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    more: {
+      type: String,
+      observer: '_load_more'
+    }
   },
 
   /**
@@ -32,6 +38,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    async _load_more() {
+      const {dataArray, keyword} = this.data
+      if(!keyword) return
+      let length = dataArray.length
+      const {books}  = await bookModel.search(length,keyword)
+      let newArray = [...dataArray,...books]
+      this.setData({dataArray: newArray})
+    },
     async updataHistory() {
       const historyWords = keywordModel.getHistory()
       const { hot: hotWords } = await keywordModel.getHot();
@@ -48,8 +62,6 @@ Component({
     },
     // 搜索
     async onConfirm(e) {
-      console.log(e);
-      
       const q  = e.detail.value || e.detail.text 
       this.setData({searching:true,keyword: q})
       const {books: dataArray} = await bookModel.search(0,q)
