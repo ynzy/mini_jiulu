@@ -3,7 +3,7 @@
 @host = {{hostname}}:{{port}}
 @contentType = application/json
 @appkey = RdshydjBvcYZhMZC
-
+@bid = 7
 
 ### 获取热门书籍(概要)
 GET {{hostname}}/book/hot_list
@@ -17,13 +17,24 @@ content-type: {{contentType}}
 appkey: {{appkey}}
 
 ### 获取书籍点赞状态
-@bid = 7
+
 GET {{hostname}}/book/{{bid}}/favor
 content-type: {{contentType}}
 appkey: {{appkey}}
 
 ### 获取书籍短评信息
-@bid = 7
+
 GET {{hostname}}/book/{{bid}}/short_comment
 content-type: {{contentType}}
 appkey: {{appkey}}
+
+### 新增短评
+
+POST {{hostname}}/book/add/short_comment
+content-type: {{contentType}}
+appkey: {{appkey}}
+
+{
+  "book_id": {{bid}},
+  "content": "新增短评"
+}

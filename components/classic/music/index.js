@@ -37,7 +37,7 @@ Component({
       const { src, title } = this.properties
       const { playing } = this.data
       mMgr.title = title
-      console.log(playing);
+      // console.log(playing);
       this.setData({
         playing: !playing
       })
