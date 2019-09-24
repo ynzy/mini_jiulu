@@ -19,7 +19,8 @@ Component({
     historyWords: [],
     hotWords: [],
     dataArray: [],
-    searching: false
+    searching: false,
+    keyword: ''
   },
   attached() {
     this.updataHistory()
@@ -37,12 +38,20 @@ Component({
       const { hot: hotWords } = await keywordModel.getHot();
       this.setData({ historyWords,hotWords })
     },
+    // 删除搜索结果
+    onDelete() {
+      console.log(1);
+      
+      this.setData({searching:false,keyword: ''})
+    },
+    // 取消搜索
     onCancel() {
       this.triggerEvent('cancle')
     },
+    // 搜索
     async onConfirm(e) {
-      this.setData({searching:true})
       const { value } = e.detail
+      this.setData({searching:true,keyword: value})
       const {books: dataArray} = await bookModel.search(0,value)
       // console.log(dataArray);
       if(dataArray) {
