@@ -1,4 +1,4 @@
-<!-- components/search/index.wxml 高级组件,搜索组件-->
+<!-- components/search/index.wxml 高级组件,搜索组件 -->
 <view class="container">
   <view class="header">
     <view class="search-container">
@@ -8,7 +8,8 @@
     </view>
     <view class='cancel' bind:tap="onCancel">取消</view>
   </view>
-  <view>
+  <!-- 搜索历史 -->
+  <view wx:if="{{!searching}}">
     <view class="history">
       <view class="title">
         <view class="chunk"></view>
@@ -16,8 +17,8 @@
       </view>
       <view class="tags">
         <block wx:for="{{historyWords}}" wx:key="index">
-            <v-tag  text="{{item}}" />
-          </block>
+          <v-tag text="{{item}}" />
+        </block>
       </view>
     </view>
     <view class="history hot-search">
@@ -27,9 +28,15 @@
       </view>
       <view class="tags">
         <block wx:for="{{hotWords}}" wx:key="index">
-            <v-tag  text="{{item}}" />
-          </block>
+          <v-tag text="{{item}}" />
+        </block>
       </view>
     </view>
+  </view>
+  <!-- 搜索结果 -->
+  <view wx:if="{{searching}}" class="books-container">
+    <block wx:for="{{dataArray}}" wx:for-item="book" wx:key="id">
+      <v-book bind:tap="openDetail" data-bid="{{book.id}}" book="{{book}}" />
+    </block>
   </view>
 </view>

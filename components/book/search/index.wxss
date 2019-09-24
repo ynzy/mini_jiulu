@@ -93,3 +93,15 @@
 .hot-search {
   margin-top: 70rpx;
 }
+.books-container {
+  width: 570rpx;
+  margin-top: 100rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 90rpx 0 90rpx;
+  justify-content: space-between;
+}
+.books-container v-book {
+  margin-bottom: 25rpx;
+}

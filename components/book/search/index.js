@@ -18,12 +18,16 @@ Component({
   data: {
     historyWords: [],
     hotWords: [],
-    dataArray: []
+    dataArray: [],
+    searching: false
   },
   attached() {
     this.updataHistory()
   },
+  detached() {
+    this.setData({searching:false})
 
+  },
   /**
    * 组件的方法列表
    */
@@ -37,6 +41,7 @@ Component({
       this.triggerEvent('cancle')
     },
     async onConfirm(e) {
+      this.setData({searching:true})
       const { value } = e.detail
       const {books: dataArray} = await bookModel.search(0,value)
       // console.log(dataArray);
