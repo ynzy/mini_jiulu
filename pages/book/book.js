@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books: []
+    books: [],
+    searching: false
   },
 
   /**
@@ -26,6 +27,18 @@ Page({
     wx.navigateTo({
       url: `/pages/book-detail/book-detail?bid=${bid}`
     });
+  },
+  // 搜索
+  onSearching() {
+    this.setData({
+      searching: !this.data.searching
+    })
+  },
+  // 取消搜索
+  onCanael() {
+    this.setData({
+      searching: !this.data.searching
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

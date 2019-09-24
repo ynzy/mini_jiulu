@@ -29,7 +29,6 @@ content-type: {{contentType}}
 appkey: {{appkey}}
 
 ### 新增短评
-
 POST {{hostname}}/book/add/short_comment
 content-type: {{contentType}}
 appkey: {{appkey}}
@@ -37,4 +36,21 @@ appkey: {{appkey}}
 {
   "book_id": {{bid}},
   "content": "新增短评"
+}
+
+### 获取热搜关键字
+GET {{hostname}}/book/hot_keyword
+content-type: {{contentType}}
+appkey: {{appkey}}
+
+### 书籍搜索
+
+GET {{hostname}}/book/search
+content-type: {{contentType}}
+appkey: {{appkey}}
+
+{
+  "summary": "1",
+  "q": "金庸",
+  "start": 0
 }

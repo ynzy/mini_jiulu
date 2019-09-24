@@ -9,6 +9,18 @@ class BookModel extends Http {
       url: `/book/hot_list`,
     })
   }
+  // 获取搜索书籍
+  search(start, q) {
+    return this.request({
+      url: '/book/search',
+      data: {
+        summary: 1,
+        q,
+        start
+      }
+    })
+  }
+
   // 获取喜欢书籍数量
   getMyBookCount() {
     return this.request({

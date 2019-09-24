@@ -24,13 +24,15 @@ Page({
     // console.log(options);
     const { bid } = options
     
-    this.initData(bid)
+    // this.initData(bid)
     /*     this.getDetail(bid)
         this.getComments(bid)
         this.getLikeStatus(bid) */
-    // this.getInitData(bid)
+    this.getInitData(bid)
+    
+    
   },
-  async initData(bid) {
+/*   async initData(bid) {
     wx.showLoading({
       title: '加载数据中...',
       mask: true,
@@ -46,8 +48,8 @@ Page({
       likeCount: fav_nums
     })
     wx.hideLoading();
-  },
-  /* getInitData(bid) {
+  }, */
+  getInitData(bid) {
     wx.showLoading({
       title: '加载数据中...',
       mask: true,
@@ -57,16 +59,17 @@ Page({
     const likeStatus =  bookModel.getLikeStatus(bid)
     Promise.all([book,comments,likeStatus])
     .then(res=> {
-      console.log(res);
+      // console.log(res);
+      const [book,comments,likeStatus] = [...res]
       this.setData({
-        book: res[0],
-        comments: res[1].comments,
-        likeStatus: res[2].like_status,
-        likeCount: res[2].fav_nums
+        book,
+        comments: comments.comments,
+        likeStatus: likeStatus.like_status,
+        likeCount: likeStatus.fav_nums
       })
       wx.hideLoading();
     })
-  }, */
+  },
   /* async getDetail(bid) {
     const book = await bookModel.getDetail(bid)
     // console.log(book);
