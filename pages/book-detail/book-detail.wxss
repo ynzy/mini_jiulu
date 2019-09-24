@@ -59,6 +59,9 @@
   color: #999;
   margin-right: 30rpx;
 }
+.container .sub-container .shadow {
+  color: #999;
+}
 .post-container {
   position: fixed;
   bottom: 0;
@@ -96,6 +99,7 @@
 .posting-container {
   position: fixed;
   bottom: 0;
+  width: 100%;
   z-index: 99;
   background-color: #fff;
 }

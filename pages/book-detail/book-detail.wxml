@@ -9,6 +9,7 @@
   </view>
   <view class="sub-container">
     <text class="headline">短评</text>
+    <text class="shadow" wx:if="{{comments == false}}">还没有短评</text>
     <view class="comment-container">
       <block wx:for="{{util.limit(comments,10)}}" wx:key="nums">
         <v-tag tag-class="{{tool.hightlight(index)}}" text="{{item.content}}">
@@ -50,12 +51,13 @@
     <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
   </view>
 </view>
-
-<v-mark wx:if="{{posting}}"/>
-
+<v-mark wx:if="{{posting}}" />
 <view class="posting-container" wx:if="{{posting}}">
   <view class="post-header">
-    <text>仅可点击标签+1</text>
+    <!-- <text hidden="{{comments.length===0? true : false}}">仅可点击标签+1</text>
+    <text hidden="{{comments.length===0? false : true}}">暂无短评</text> -->
+    <text wx:if="{{comments.length!==0}}">仅可点击标签+1</text>
+    <text wx:else>暂无短评</text>
     <text bind:tap="onCancel" class="cancel">取消</text>
   </view>
   <view class="comment-container">
@@ -67,7 +69,6 @@
   </view>
   <input bindconfirm="onPost" class="post" placeholder="短评最多12个字" />
 </view>
-
 <wxs module="tool">
   var hightlight = function (index) {
     return index === 0 && 'ex-tag1' || index === 1 && 'ex-tag2' || ''
