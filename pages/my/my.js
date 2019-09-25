@@ -23,15 +23,23 @@ Page({
   onLoad: function (options) {
     this.userAuthorized()
     this.getMyBookCount()
+
+  },
+  /**
+ * 生命周期函数--监听页面显示
+ */
+  onShow: function () {
     this.getMyFavor()
   },
   async getMyFavor() {
+    console.log('111');
+
     let classics = await classicModel.getMyFavor()
-    this.setData({classics})
+    this.setData({ classics })
   },
   async getMyBookCount() {
-    const {count} = await bookModel.getMyBookCount()
-    this.setData({bookCount:count})
+    const { count } = await bookModel.getMyBookCount()
+    this.setData({ bookCount: count })
   },
   // 用户认证
   userAuthorized() {
@@ -42,24 +50,24 @@ Page({
             lang: 'zh_CN',
             success: (data) => {
               // console.log(data);
-              this.setData({authorized: true, userInfo:data.userInfo})
+              this.setData({ authorized: true, userInfo: data.userInfo })
             },
           });
-        } else { 
-          
+        } else {
+
         }
       },
     });
   },
   // 获取用户信息
   onGetUserInfo(event) {
-    const {userInfo} = event.detail
+    const { userInfo } = event.detail
     // console.log(userInfo);
-    if(userInfo) {
-      this.setData({userInfo,authorized: true})
+    if (userInfo) {
+      this.setData({ userInfo, authorized: true })
     }
   },
-  onPreviewTap: function(event) {
+  onPreviewTap: function (event) {
     // wx.navigateTo({
     //   url: '/pages/classic-detail/index?cid=' + event.detail.cid + '&type=' + event.detail.type
     // })
@@ -85,12 +93,7 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

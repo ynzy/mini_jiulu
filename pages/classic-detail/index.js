@@ -27,21 +27,27 @@ Component({
   methods: {
     onLoad: async function (options) {
       let newdata = JSON.parse(options.classic)
-      console.log(newdata);
-      
+      // console.log(newdata);
+
       let classic = await classicModel.getById(newdata.id, newdata.type)
       // console.log(classic);
-      if(classic) {
-        this._getLikeStatus(classic.id,classic.type)
-        this.setData({classic})
+      if (classic) {
+        this._getLikeStatus(classic.id, classic.type)
+        this.setData({ classic })
       }
     },
-    async _getLikeStatus(cid,type) {
+    async _getLikeStatus(cid, type) {
       let data = await likeModel.getClassicLikeStatus(cid, type)
       this.setData({
         likeStatus: data.like_status,
         likeCount: data.fav_nums
       })
-    }
+    },
+    onLike(event) {
+      let { behavior } = event.detail
+      let { id, type } = this.data.classic
+      // console.log(behavior);
+      likeModel.like(behavior, id, type)
+    },
   }
 })

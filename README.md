@@ -17,9 +17,9 @@
 一个良好的项目结构,可以让我们的开发与维护变得更简单,使用组件化开发可以提高我们的开发效率
 ![QQ截图20190920095947.png](https://cdn.nlark.com/yuque/0/2019/png/243804/1568944836016-5fb00169-866d-40e0-adf7-a6790cd695da.png#align=left&display=inline&height=518&name=QQ%E6%88%AA%E5%9B%BE20190920095947.png&originHeight=518&originWidth=1042&size=616973&status=done&width=1042)
 ```js
-|--components // 组件
-|--|--behaviors // 共享行为(组件间代码共享,包括属性、数据、生命周期函数和方法...)
-|--|--    //定义的组件文件
+| --components // 组件 |
+| -------------------- |     | behaviors // 共享行为(组件间代码共享,包括属性、数据、生命周期函数和方法...) |
+| -------------------- | --- |//定义的组件文件
 |--docs  // 项目文档(api,接口测试...)
 |--images  // 全局图片
 |--models  // 模型(数据模型->api接口封装,模型数据处理)
@@ -44,6 +44,7 @@
 *    关于:  "pages/about/about",
 *    学习:  "pages/course/course",
 * 期刊详情: "pages/classic-detail/index"
+
 #### 组件
 * 书籍列表<v-book>: components/book/index.wxml
 * 搜索书籍<v-search>: components/book/search/index.wxml 高级组件,搜索组件
@@ -54,8 +55,22 @@
 * 期刊导航组件<v-navi>:  /components/navi/index
 * 喜欢组件<v-like>: /components/like/index
 * 按钮组件<v-button>: /components/image-button/index
-#### 功能
 
+#### 功能
+1. 期刊页面
+  1. 期刊列表
+  2. 期刊音乐播放
+2. 书单页面
+  3. 书单列表
+  4. 搜索书籍功能
+  5. 书籍详情
+  6. 添加书籍评论
+3. 喜欢页面
+  7. 用户授权
+  8. 用户信息展示
+4. 通用功能
+  9. 喜欢功能
+  10. 分享功能
 
 ## 2. 项目开发
 ### 2.1 app.json
@@ -85,6 +100,17 @@
   }
 }
 ```
+### 2.4 page上应用样式
+* 小程序页面渲染时会自动包裹page元素,在page节点上设置的样式可以全局应用
+例如: 设置苹方字体
+```css
+page {
+  font-family: 'PingFangSC-Thin';
+  font-size: 32rpx
+}
+```
+
+### 2.5组件事件与事件处理
 
 ## 背景音乐播放API
 `wx.getBackgroundAudioManager`
