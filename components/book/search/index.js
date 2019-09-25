@@ -40,19 +40,15 @@ Component({
    */
   methods: {
     async loadMore() {
-      
-      let { keyword, loading } = this.data
+      let { keyword } = this.data
       if (!keyword) return;
-      // if(this._isLocked) return
-      if (loading) {
-        return
-      }
+      if(this._isLocked) return
       if (this.hasMore()) {
-        this.data.loading = true;
+        this._locked()
         const { books } = await bookModel.search(this.getCurrentStart(), keyword)
         if (books) {
           this.setMoreData(books)
-          this.data.loading = false;
+          this._unLocked
         }
       }
 
@@ -64,7 +60,7 @@ Component({
     },
     // 删除搜索结果
     onDelete() {
-      this.setData({ searching: false, keyword: '' })
+      this._closeResult()
     },
     // 取消搜索
     onCancel() {
@@ -83,15 +79,25 @@ Component({
         keywordModel.addToHistory(q)
       }
     },
+    // 是否加锁
     _isLocked() {
       return this.data.loading ? true : false
     },
+    // 加锁
     _locked() {
       this.data.loading = true
+    },
+    // 解锁
+    _unLocked() {
+      this.data.loading = false
     },
     // 显示搜索结果
     _showResult() {
       this.setData({ searching: true })
+    },
+    // 关闭搜索
+    _closeResult() {
+      this.setData({ searching: false,keyword: '' })
     }
   }
 })
