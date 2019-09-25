@@ -93,8 +93,15 @@
   align-items: center;
 }
 .post-container .like-container .like {
-  margin-right: 30rpx;
   margin-top: 10rpx;
+}
+.post-container .like-container .share-btn {
+  margin-top: 28rpx;
+}
+.post-container .like-container .share-btn .share {
+  /* padding:10rpx; */
+  width: 40rpx;
+  height: 40rpx;
 }
 .posting-container {
   position: fixed;

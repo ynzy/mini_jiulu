@@ -24,7 +24,7 @@ Page({
           wx.getUserInfo({
             lang: 'zh_CN',
             success: (data) => {
-              console.log(data);
+              // console.log(data);
               this.setData({authorized: true, userInfo:data.userInfo})
             },
           });

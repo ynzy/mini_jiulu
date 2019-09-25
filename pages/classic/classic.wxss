@@ -17,8 +17,24 @@
   margin-left: 20rpx;
   margin-top: 4rpx;
 }
-.container .header .like {
+.container .header .like-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30rpx;
+}
+.container .header .like-container .like {
   margin-top: 6rpx;
+}
+.container .header .like-container .share-btn {
+  margin-top: 28rpx;
+  margin-left: 10rpx;
+}
+.container .header .like-container .share-btn .share {
+  /* padding:10rpx; */
+  width: 40rpx;
+  height: 40rpx;
 }
 .container .navi {
   position: absolute;
