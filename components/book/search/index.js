@@ -43,8 +43,7 @@ Component({
     async loadMore() {
       let { keyword } = this.data
       if (!keyword) return;
-      console.log(this._isLocked());
-
+      // console.log(this._isLocked());
       if (this._isLocked()) return
       if (this.hasMore()) {
         this._locked()
@@ -67,24 +66,27 @@ Component({
     },
     // 删除搜索结果
     onDelete() {
+      // this.initialize()
       this._closeResult()
     },
     // 取消搜索
     onCancel() {
+      // this.initialize()
       this.triggerEvent('cancle')
     },
     // 搜索
     async onConfirm(e) {
       const q = e.detail.value || e.detail.text
       this.setData({ keyword: q })
-      this._showResult(q)
+      this._showResult()
       this._showLoadingCenter()
-      this.initialize()
       const { books, total } = await bookModel.search(0, q)
       if (books) {
         this.setMoreData(books)
         this.setTotal(total)
-        keywordModel.addToHistory(q)
+        if(q) {
+          keywordModel.addToHistory(q)
+        }
         this._hideLoadingCenter()
       }
     },
