@@ -1,2 +1,15 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<!-- pages/my/my.wxml 我的页面 -->
+<view class="container">
+  <image src="/images/my/my@bg.png" class="bg"></image>
+  <open-data class="avatar avatar-position" type="userAvatarUrl" lang="zh_CN" />
+  <view class="about-container">
+    <view bind:tap="onJumpToAbout" class="about-us">
+      <image src="/images/my/about.png" />
+      <text class="description">关于我们</text>
+    </view>
+    <view class="about-us">
+      <!-- <text class="book-num">{{myBooksCount}}</text> -->
+      <text class="description">喜欢的书</text>
+    </view>
+  </view>
+</view>
