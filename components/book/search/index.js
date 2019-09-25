@@ -27,7 +27,8 @@ Component({
     hotWords: [],
     searching: false,
     keyword: '',
-    loading: false
+    loading: false,
+    loadingCenter: false
   },
   attached() {
     this.updataHistory()
@@ -77,13 +78,22 @@ Component({
       const q = e.detail.value || e.detail.text
       this.setData({ keyword: q })
       this._showResult(q)
+      this._showLoadingCenter()
       this.initialize()
       const { books, total } = await bookModel.search(0, q)
       if (books) {
         this.setMoreData(books)
         this.setTotal(total)
         keywordModel.addToHistory(q)
+        this._hideLoadingCenter()
       }
+    },
+    // 显示中间的loading
+    _showLoadingCenter() {
+      this.setData({loadingCenter: true})
+    },
+    _hideLoadingCenter() {
+      this.setData({loadingCenter: false})
     },
     // 是否加锁
     _isLocked() {
@@ -91,11 +101,11 @@ Component({
     },
     // 加锁
     _locked() {
-      this.data.loading = true
+      this.setData({loading: true})
     },
     // 解锁
     _unLocked() {
-      this.data.loading = false
+      this.setData({loading: false})
     },
     // 显示搜索结果
     _showResult() {

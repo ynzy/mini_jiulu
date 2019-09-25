@@ -39,4 +39,6 @@
       <v-book bind:tap="openDetail" data-bid="{{book.id}}" book="{{book}}" />
     </block>
   </view>
+  <v-loading class="loading-center" wx:if="{{loadingCenter}}"/>
+  <v-loading class="loading" wx:if="{{loading}}"/>
 </view>
