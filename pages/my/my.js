@@ -1,4 +1,10 @@
 // pages/my/my.js
+import { BookModel } from "../../models/book";
+import { ClassicModel, } from "../../models/classic";
+
+const bookModel = new BookModel()
+const classicModel = new ClassicModel()
+
 Page({
 
   /**
@@ -7,7 +13,8 @@ Page({
   data: {
     userInfo: null,
     authorized: false,
-    myBooksCount: 0
+    bookCount: 0,
+    classics: []
   },
 
   /**
@@ -15,7 +22,16 @@ Page({
    */
   onLoad: function (options) {
     this.userAuthorized()
-
+    this.getMyBookCount()
+    this.getMyFavor()
+  },
+  async getMyFavor() {
+    let classics = await classicModel.getMyFavor()
+    this.setData({classics})
+  },
+  async getMyBookCount() {
+    const {count} = await bookModel.getMyBookCount()
+    this.setData({bookCount:count})
   },
   // 用户认证
   userAuthorized() {
@@ -43,10 +59,20 @@ Page({
       this.setData({userInfo,authorized: true})
     }
   },
-  onJumpToAbout(event) {
+  onPreviewTap: function(event) {
     wx.navigateTo({
+      url: '/pages/classic-detail/index?cid=' + event.detail.cid + '&type=' + event.detail.type
+    })
+  },
+  onJumpToAbout(event) {
+    /* wx.navigateTo({
       url: '/pages/about/about',
-    });
+    }); */
+  },
+  onStudy() {
+    /* wx.navigateTo({
+      url: '/pages/course/course',
+    }) */
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

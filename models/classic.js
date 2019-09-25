@@ -26,6 +26,11 @@ class ClassicModel extends HTTP {
       return classic
     }
   }
+  getMyFavor() {
+    return this.request({
+      url: `/classic/favor`,
+    })
+  }
   /* getPrevious(index) {
     return this.request({
       url: `/classic/${index}/previous`
