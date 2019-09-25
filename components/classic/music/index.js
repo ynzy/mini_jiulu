@@ -25,6 +25,8 @@ Component({
   attached() {
     this._recoverStatus();
     this._monitorSwitch();
+    console.log();
+    
   },
   detached() {
     // mMgr.stop()

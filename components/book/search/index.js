@@ -1,7 +1,7 @@
 // components/search/index.js
 import { KeywordModel } from "../../../models/keyword";
 import { BookModel } from "../../../models/book";
-
+import { paginationBev } from "../../behaviors/pagination";
 
 
 const keywordModel = new KeywordModel()
@@ -11,10 +11,11 @@ Component({
   /**
    * 组件的属性列表
    */
+  behaviors: [paginationBev],
   properties: {
     more: {
       type: String,
-      observer: '_load_more'
+      observer: 'loadMore'
     }
   },
 
@@ -24,37 +25,46 @@ Component({
   data: {
     historyWords: [],
     hotWords: [],
-    dataArray: [],
     searching: false,
-    keyword: ''
+    keyword: '',
+    loading: false
   },
   attached() {
     this.updataHistory()
   },
   detached() {
-    this.setData({searching:false})
+    this.setData({ searching: false })
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    async _load_more() {
-      const {dataArray, keyword} = this.data
-      if(!keyword) return
-      let length = dataArray.length
-      const {books}  = await bookModel.search(length,keyword)
-      let newArray = [...dataArray,...books]
-      this.setData({dataArray: newArray})
+    async loadMore() {
+      
+      let { keyword, loading } = this.data
+      if (!keyword) return;
+      // if(this._isLocked) return
+      if (loading) {
+        return
+      }
+      if (this.hasMore()) {
+        this.data.loading = true;
+        const { books } = await bookModel.search(this.getCurrentStart(), keyword)
+        if (books) {
+          this.setMoreData(books)
+          this.data.loading = false;
+        }
+      }
+
     },
     async updataHistory() {
       const historyWords = keywordModel.getHistory()
       const { hot: hotWords } = await keywordModel.getHot();
-      this.setData({ historyWords,hotWords })
+      this.setData({ historyWords, hotWords })
     },
     // 删除搜索结果
     onDelete() {
-      console.log(1);
-      this.setData({searching:false,keyword: ''})
+      this.setData({ searching: false, keyword: '' })
     },
     // 取消搜索
     onCancel() {
@@ -62,13 +72,26 @@ Component({
     },
     // 搜索
     async onConfirm(e) {
-      const q  = e.detail.value || e.detail.text 
-      this.setData({searching:true,keyword: q})
-      const {books: dataArray} = await bookModel.search(0,q)
-      if(dataArray) {
+      const q = e.detail.value || e.detail.text
+      this.setData({ keyword:q })
+      this._showResult(q)
+      this.initialize()
+      const { books, total } = await bookModel.search(0, q)
+      if (books) {
+        this.setMoreData(books)
+        this.setTotal(total)
         keywordModel.addToHistory(q)
-        this.setData({dataArray})
       }
+    },
+    _isLocked() {
+      return this.data.loading ? true : false
+    },
+    _locked() {
+      this.data.loading = true
+    },
+    // 显示搜索结果
+    _showResult() {
+      this.setData({ searching: true })
     }
   }
 })
