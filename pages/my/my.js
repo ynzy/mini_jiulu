@@ -5,16 +5,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: null,
+    authorized: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.userAuthorized()
 
   },
-
+  // 用户认证
+  userAuthorized() {
+    wx.getSetting({
+      success: (data) => {
+        if (data.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            lang: 'zh_CN',
+            success: (data) => {
+              console.log(data);
+              this.setData({authorized: true, userInfo:data.userInfo})
+            },
+          });
+        } else { 
+          
+        }
+      },
+    });
+  },
+  // 获取用户信息
+  onGetUserInfo(event) {
+    const {userInfo} = event.detail
+    // console.log(userInfo);
+    if(userInfo) {
+      this.setData({userInfo,authorized: true})
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
