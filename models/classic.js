@@ -26,6 +26,14 @@ class ClassicModel extends HTTP {
       return classic
     }
   }
+  // 获取某一期的详细信息
+  getById(cid, type){
+    return this.request({
+      url: `/classic/${type}/${cid}`
+    })
+
+  }
+  // 获取我喜欢的期刊
   getMyFavor() {
     return this.request({
       url: `/classic/favor`,

@@ -1,3 +1,4 @@
+<!-- 预览组件 -->
 <view catch:tap="onTap" class="container">
   <view class="head">
     <v-tag text="{{typeText}}" tag-class="tag" />

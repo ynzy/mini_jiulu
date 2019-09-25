@@ -60,8 +60,12 @@ Page({
     }
   },
   onPreviewTap: function(event) {
+    // wx.navigateTo({
+    //   url: '/pages/classic-detail/index?cid=' + event.detail.cid + '&type=' + event.detail.type
+    // })
+    const {cid, type} = event.detail
     wx.navigateTo({
-      url: '/pages/classic-detail/index?cid=' + event.detail.cid + '&type=' + event.detail.type
+      url: `/pages/classic-detail/index?cid=${cid}&type=${type}`
     })
   },
   onJumpToAbout(event) {

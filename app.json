@@ -5,7 +5,8 @@
     "pages/book/book",
     "pages/book-detail/book-detail",
     "pages/about/about",
-    "pages/course/course"
+    "pages/course/course",
+    "pages/classic-detail/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fac001",
