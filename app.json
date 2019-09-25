@@ -6,7 +6,8 @@
     "pages/book-detail/book-detail",
     "pages/about/about",
     "pages/course/course",
-    "pages/classic-detail/index"
+    "pages/classic-detail/index",
+    "pages/npm/npm"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fac001",
@@ -26,8 +27,7 @@
     "selectedColor": "#000000",
     "backgroundColor": "#ffffff",
     "color": "#c7c7c7",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/classic/classic",
         "text": "流行",
         "iconPath": "images/tab/classic.png",
@@ -44,6 +44,12 @@
         "selectedIconPath": "/images/tab/my@highlight.png",
         "iconPath": "/images/tab/my.png",
         "text": "喜欢"
+      },
+      {
+        "pagePath": "pages/npm/npm",
+        "selectedIconPath": "/images/tab/my@highlight.png",
+        "iconPath": "/images/tab/my.png",
+        "text": "npm构建"
       }
     ]
   }

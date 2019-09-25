@@ -112,6 +112,9 @@ page {
 
 ### 2.5组件事件与事件处理
 
+
+## 微信小程序使用npm构建
+https://www.cnblogs.com/duanzhenzhen/p/11162766.html
 ## 背景音乐播放API
 `wx.getBackgroundAudioManager`
 

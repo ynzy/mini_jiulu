@@ -1,0 +1,2 @@
+<!-- pages/npm/npm.wxml -->
+<van-button type="primary">主要按钮</van-button>

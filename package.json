@@ -1,0 +1,31 @@
+{
+  "name": "ynzy_jiulu",
+  "version": "1.0.0",
+  "description": "1. 到官方网址下载[微信小程序开发工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/stable.html)\r 1. 申请微信小程序开发账号",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.weixin.qq.com/ynzy/ynzy_jiulu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vant-weapp": "^1.0.0-beta.0"
+  },
+  "devDependencies": {
+    "husky": "^3.0.5",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg"
+    }
+  }
+}
