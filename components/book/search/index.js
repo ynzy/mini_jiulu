@@ -91,6 +91,12 @@ Component({
         this._hideLoadingCenter()
       }
     },
+    openDetail(e) {
+      const { bid } = e.target.dataset
+      wx.navigateTo({
+        url: `/pages/book-detail/book-detail?bid=${bid}`
+      });
+    },
     // 显示中间的loading
     _showLoadingCenter() {
       this.setData({loadingCenter: true})
@@ -106,6 +112,6 @@ Component({
     _closeResult() {
       this.setData({ searching: false, keyword: '' })
     }
-    
+
   }
 })
