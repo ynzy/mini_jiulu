@@ -44,17 +44,18 @@ Component({
       let { keyword } = this.data
       if (!keyword) return;
       // console.log(this._isLocked());
-      if (this._isLocked()) return
+      if (this.isLocked()) return
       if (this.hasMore()) {
-        this._locked()
+        this.locked()
         try {
           const { books } = await bookModel.search(this.getCurrentStart(), keyword)
           if (books) {
             this.setMoreData(books)
-            this._unLocked()
+            this.unLocked()
           }
         } catch (error) {
-          this._unLocked()
+          // 防止死锁
+          this.unLocked()
         }
       }
 
@@ -97,18 +98,6 @@ Component({
     _hideLoadingCenter() {
       this.setData({loadingCenter: false})
     },
-    // 是否加锁
-    _isLocked() {
-      return this.data.loading ? true : false
-    },
-    // 加锁
-    _locked() {
-      this.setData({loading: true})
-    },
-    // 解锁
-    _unLocked() {
-      this.setData({loading: false})
-    },
     // 显示搜索结果
     _showResult() {
       this.setData({ searching: true })
@@ -117,5 +106,6 @@ Component({
     _closeResult() {
       this.setData({ searching: false, keyword: '' })
     }
+    
   }
 })
