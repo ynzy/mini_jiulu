@@ -16,6 +16,46 @@
 ### 1.2. 项目结构
 一个良好的项目结构,可以让我们的开发与维护变得更简单,使用组件化开发可以提高我们的开发效率
 ![QQ截图20190920095947.png](https://cdn.nlark.com/yuque/0/2019/png/243804/1568944836016-5fb00169-866d-40e0-adf7-a6790cd695da.png#align=left&display=inline&height=518&name=QQ%E6%88%AA%E5%9B%BE20190920095947.png&originHeight=518&originWidth=1042&size=616973&status=done&width=1042)
+```js
+|--components // 组件
+|--|--behaviors // 共享行为(组件间代码共享,包括属性、数据、生命周期函数和方法...)
+|--|--    //定义的组件文件
+|--docs  // 项目文档(api,接口测试...)
+|--images  // 全局图片
+|--models  // 模型(数据模型->api接口封装,模型数据处理)
+|--pages   // 页面
+|--utils   // 工具库
+|--.gitignore// git忽略文件
+|--app.js  // 项目根文件
+|--app.json  // 全局配置文件
+|--app.less  // 全局less文件(预编译文件)
+|--app.wxss  // 全局style文件
+|--config.js // 全局自定义配置文件(统一的请求网址...)
+|--project.config.json  // 项目配置文件,一般不用动
+|--README.md // 项目的说明文档
+|--sitemap.json // 是否允许被微信索引
+```
+### 1.3 完成页面/组件/功能
+#### 页面
+* 期刊页面: "pages/classic/classic",
+* 喜欢页面: "pages/my/my",
+* 书籍页面: "pages/book/book",
+* 书籍详情: "pages/book-detail/book-detail",
+*    关于:  "pages/about/about",
+*    学习:  "pages/course/course",
+* 期刊详情: "pages/classic-detail/index"
+#### 组件
+* 书籍列表<v-book>: components/book/index.wxml
+* 搜索书籍<v-search>: components/book/search/index.wxml 高级组件,搜索组件
+* 期刊句子组件<v-essay>: /components/classic/essay/index
+* 期刊电影组件<v-movie>: /components/classic/movie/index
+* 期刊音乐组件<v-music>: components/classic/music/index
+* 期刊号组件<v-episode>: /components/episode/index
+* 期刊导航组件<v-navi>:  /components/navi/index
+* 喜欢组件<v-like>: /components/like/index
+* 按钮组件<v-button>: /components/image-button/index
+#### 功能
+
 
 ## 2. 项目开发
 ### 2.1 app.json
