@@ -4,10 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    like: {
+    like: { //喜欢状态
       type: Boolean,
     },
-    count: {
+    count: { //喜欢数量
       type: Number
     },
     readOnly: {

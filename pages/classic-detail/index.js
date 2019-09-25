@@ -17,8 +17,6 @@ Component({
    */
   data: {
     classic: null,
-    latest: true,
-    first: false,
     likeStatus: false,
     likeCount: 0
   },
@@ -28,9 +26,10 @@ Component({
    */
   methods: {
     onLoad: async function (options) {
-      let {cid,type} = options
-      // console.log({cid,type});  
-      let classic = await classicModel.getById(cid, type)
+      let newdata = JSON.parse(options.classic)
+      console.log(newdata);
+      
+      let classic = await classicModel.getById(newdata.id, newdata.type)
       // console.log(classic);
       if(classic) {
         this._getLikeStatus(classic.id,classic.type)

@@ -63,9 +63,9 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/classic-detail/index?cid=' + event.detail.cid + '&type=' + event.detail.type
     // })
-    const {cid, type} = event.detail
+    const classic = event.detail
     wx.navigateTo({
-      url: `/pages/classic-detail/index?cid=${cid}&type=${type}`
+      url: `/pages/classic-detail/index?classic=${JSON.stringify(classic)}`
     })
   },
   onJumpToAbout(event) {
