@@ -15,7 +15,7 @@
   1. vscode: 安装`minapp`或者`小程序开发助手`插件,即可正常查看文件以及代码提示等等
 ### 1.2. 项目结构
 一个良好的项目结构,可以让我们的开发与维护变得更简单,使用组件化开发可以提高我们的开发效率
-![QQ截图20190920095947.png](https://cdn.nlark.com/yuque/0/2019/png/243804/1568944836016-5fb00169-866d-40e0-adf7-a6790cd695da.png#align=left&display=inline&height=518&name=QQ%E6%88%AA%E5%9B%BE20190920095947.png&originHeight=518&originWidth=1042&size=616973&status=done&width=1042)
+![img](https://cdn.nlark.com/yuque/0/2019/png/243804/1568944836016-5fb00169-866d-40e0-adf7-a6790cd695da.png#align=left&display=inline&height=518&name=QQ%E6%88%AA%E5%9B%BE20190920095947.png&originHeight=518&originWidth=1042&size=616973&status=done&width=1042)
 ```js
 | --components // 组件 |
 | -------------------- |     | behaviors // 共享行为(组件间代码共享,包括属性、数据、生命周期函数和方法...) |
@@ -72,84 +72,3 @@
   9. 喜欢功能
   10. 分享功能
 
-## 2. 项目开发
-### 2.1 app.json
-先学习下`app.json`的[配置](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html)
-1. pages 用于指定小程序由哪些页面组成
-2. window 用于设置小程序的状态栏、导航条、标题、窗口背景色。
-3. tabBar 用于切换页面
-
-### 2.2 代码规范
-[小程序开发规范](https://www.yuque.com/ynzy/xiaochengxu/guifan)
-
-订制一个规范要基于这样几个标准
-* 保证不会出现代码错误
-* 要在一个大规范的前提下订制规范
-
-### 2.3 组件使用
-1. 创建
-使用微信开发者工具创建一个components,一般创建一个components文件夹,存放所有公共组件,比如: `components/like`
-2. 引用组件
-在pages页面要使用组件的页面中的`.json`文件中进行引用
-> pages/classic/classic.json
-引用路径要使用绝对路径:
-```json
-{
-  "usingComponents": {
-    "v-like": "/components/like/index"
-  }
-}
-```
-### 2.4 page上应用样式
-* 小程序页面渲染时会自动包裹page元素,在page节点上设置的样式可以全局应用
-例如: 设置苹方字体
-```css
-page {
-  font-family: 'PingFangSC-Thin';
-  font-size: 32rpx
-}
-```
-
-### 2.5组件事件与事件处理
-
-
-## 微信小程序使用npm构建
-https://www.cnblogs.com/duanzhenzhen/p/11162766.html
-## 背景音乐播放API
-`wx.getBackgroundAudioManager`
-
-返回值
-
-BackgroundAudioManager
-
-属性: 
-
-* string src 音频的数据源,当设置了新的 src 时，会自动开始播放
-* boolean paused 当前是否暂停或停止。（只读）
-
-方法: 
-
-* play()  播放
-* pause() 暂停
-* stop()  停止
-* onPlay() 播放事件
-* onPause() 暂停事件
-* onStop() 停止事件
-
-## 代码编写风格
-* https://github.com/airbnb/javascript
-
-主要查看
-1. Types
-2. References
-3. Objects
-4. Arrays
-5. Destructuring
-6. Strings
-7. Functions
-8. Arrow Functions
-9. Classes & Constructors
-10. Modules
-11. Properties
-12. Variables
-13. Blocks
